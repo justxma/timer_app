@@ -1,1 +1,1 @@
-# timer_app
+# Timer app

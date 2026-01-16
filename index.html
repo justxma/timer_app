@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Focus Flow Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button id="open-sidebar-btn" class="open-sidebar-btn">☰</button>
+
+    <div class="app-container">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>Proiecte</h2>
+                <div class="header-actions">
+                    <button id="add-section-btn" class="icon-btn">+</button>
+                    <button id="close-sidebar-btn" class="close-sidebar-btn">✕</button>
+                </div>
+            </div>
+            <div id="sections-list" class="sections-list"></div>
+        </aside>
+
+        <main class="timer-area">
+            <div class="top-info">
+                <span class="label">Sesiune activă</span>
+                <h3 id="active-section-name">Selectează un proiect</h3>
+            </div>
+
+            <div class="main-display">
+                <div id="clock" class="ios-clock-flat">00:00:00</div>
+            </div>
+
+            <div class="bottom-controls">
+                <div class="controls-row">
+                    <button id="reset-btn" class="ios-btn secondary">Reset</button>
+                    <button id="start-stop-btn" class="ios-btn start">Start</button>
+                </div>
+                <div class="action-row">
+                    <button id="finish-btn" class="finish-btn" disabled>Finalizează & Salvează</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

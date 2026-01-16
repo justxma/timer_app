@@ -1,0 +1,208 @@
+:root {
+    --bg-color: #000000;
+    --sidebar-bg: #111111;
+    --text-primary: #ffffff;
+    --text-secondary: #8e8e93;
+    --accent-green: #30d158; 
+    --accent-red: #ff453a;   
+    --accent-orange: #ff6b00; 
+    --font-main: 'Inter', -apple-system, sans-serif;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container { 
+    display: flex; 
+    height: 100%; 
+    width: 100%; 
+}
+
+/* --- SIDEBAR & ANIMATION --- */
+.sidebar {
+    width: 20%;
+    min-width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid #222;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+    position: absolute;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-header h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+
+.header-actions { display: flex; gap: 12px; align-items: center; }
+
+/* Buton Burger */
+.open-sidebar-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #1c1c1e;
+    color: var(--accent-orange);
+    border: none;
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 50;
+    display: none;
+    transition: 0.2s;
+}
+
+.close-sidebar-btn {
+    background: transparent; border: none;
+    color: var(--text-secondary); font-size: 20px; cursor: pointer;
+}
+
+/* LISTA PROIECTE */
+.sections-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+
+.section-item {
+    background-color: #1c1c1e;
+    padding: 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+
+.section-item.active { border-color: var(--accent-orange); background-color: #151515; }
+.section-name { font-weight: 700; font-size: 15px; }
+.section-time { font-size: 12px; color: var(--text-secondary); font-weight: 600; }
+
+.delete-btn {
+    background: transparent; border: none; color: #444; font-size: 16px; cursor: pointer;
+}
+.delete-btn:hover { color: var(--accent-red); }
+
+/* --- MAIN AREA --- */
+.timer-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 0;
+    background-color: #000;
+}
+
+.top-info { text-align: center; }
+.top-info .label { 
+    color: var(--accent-orange); 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 11px;
+}
+.top-info h3 { font-size: 28px; font-weight: 900; margin-top: 8px; }
+
+.main-display {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ios-clock-flat {
+    font-size: 16vh; 
+    font-weight: 800;
+    letter-spacing: -4px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: white;
+}
+
+/* CONTROALE TIMER - HOVER */
+.bottom-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.controls-row { display: flex; gap: 80px; }
+
+.ios-btn {
+    width: 85px; height: 85px;
+    border-radius: 50%; border: none;
+    font-size: 16px; font-weight: 700;
+    cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ios-btn.start { background: rgba(48, 209, 88, 0.15); color: var(--accent-green); }
+.ios-btn.start:hover { background: rgba(48, 209, 88, 0.3); transform: scale(1.08); }
+
+.ios-btn.stop { background: rgba(255, 69, 58, 0.15); color: var(--accent-red); }
+.ios-btn.stop:hover { background: rgba(255, 69, 58, 0.3); transform: scale(1.08); }
+
+.ios-btn.secondary { background: #222; color: #fff; }
+.ios-btn.secondary:hover { background: #333; transform: scale(1.08); }
+
+/* FINISH BUTTON */
+.finish-btn {
+    background: transparent;
+    border: 2px solid var(--accent-orange);
+    color: var(--accent-orange);
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-size: 15px; font-weight: 800;
+    text-transform: uppercase; cursor: pointer; transition: 0.2s;
+}
+
+.finish-btn:not(:disabled):hover { background: var(--accent-orange); color: #000; }
+.finish-btn:disabled { border-color: #222; color: #333; cursor: not-allowed; }
+
+.icon-btn {
+    background: var(--accent-orange); border: none; color: #000;
+    width: 30px; height: 30px; border-radius: 50%; font-weight: 900;
+}
+
+/* --- MOBILE RESPONSIVE (iPhone 14) --- */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        width: 85%;
+        height: 100%;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    }
+    .ios-clock-flat { font-size: 18vw; letter-spacing: -2px; }
+    .controls-row { gap: 40px; }
+    .ios-btn { width: 75px; height: 75px; }
+    .top-info h3 { font-size: 22px; }
+    .timer-area { padding: 60px 20px; }
+}
